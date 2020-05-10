@@ -33,7 +33,7 @@ For example, this would render every class:
 		true, 
 		"firstClass", 
 		"secondClass", 
-		"someOtherClass
+		"someOtherClass"
 	]);
 ```
 
