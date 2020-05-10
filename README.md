@@ -1,7 +1,9 @@
 # stylelist
+
 A simple package that concatenates your css-classes, optionally with a condition
 
 ## Usage
+
 This package was created to have a simplified syntax when using css-classes in JSX especially when they have conditions.
 
 Long, badly-readable style-attributes like
@@ -13,40 +15,32 @@ Long, badly-readable style-attributes like
 become a little more readable:
 
 ```html
-	<div className={stylelist([
+	<div className={stylelist(
 		"nav-item"
 		"mr-5",
 		[navItemActive, "active"],
 		[!navItemActive, "disabled"]
-	])}>Hello!</div>
+	)}>Hello!</div>
 ```
 
 # Documentation
-The *stylelist*-Function is pretty simple. It takes any number of arguments. If you give a string, it will simply be added to the output.
+
+The _stylelist_-Function is pretty simple. It takes any number of arguments. If you give a string, it will simply be added to the output.
 
 If you give an array, the first element is the render-condition and controls the rendering of the remaining elements in this array.
 
-For example, this would render every class:
+For example, this would render every class in the second argument:
 
 ```js
-	stylelist([
-		true, 
-		"firstClass", 
-		"secondClass", 
-		"someOtherClass"
-	]);
+stylelist("alwaysRenderedClassName", [true, "firstClass", "secondClass", "someOtherClass"]);
 ```
 
 While this example wont render anything:
 
 ```js
-	stylelist([
-		false, 
-		"firstClass", 
-		"secondClass", 
-		"someOtherClass"
-	]);
+stylelist("alwaysRenderedClassName", [false, "firstClass", "secondClass", "someOtherClass"]);
 ```
 
 ## ... and why?
+
 To reduce all the hassle with concatenated classes and the spaces before and after every element.
