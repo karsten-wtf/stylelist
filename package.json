@@ -1,6 +1,6 @@
 {
   "name": "stylelist",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple package that concatenates your css-classes, optionally with a condition.",
   "main": "stylelist.js",
   "scripts": {
