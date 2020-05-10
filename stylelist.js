@@ -7,20 +7,16 @@
  * or arrays. If it´s an array, it checks if the first argument is true. If so, the rest of the array
  * will be added to your classlist.
  */
-export const stylelist = (...args) => {
-
+module.exports = function (...args) {
 	// We wil return this array later
 	let classListArray = [];
-	
+
 	// For each entry in our argument list
 	args.forEach((element) => {
-
 		// If our current element is an array
 		if (element instanceof Array) {
-
 			// Let´s check if the first element is true
 			if (element[0]) {
-
 				// And append the remaining elements to our output-array
 				classListArray = classListArray.concat(element.slice(1, element.length));
 			}
@@ -28,7 +24,6 @@ export const stylelist = (...args) => {
 
 		// Most-used case: A simple string
 		if (typeof element == "string") {
-
 			// Simply push it to our array
 			classListArray.push(element);
 		}
