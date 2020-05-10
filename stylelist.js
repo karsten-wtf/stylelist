@@ -1,3 +1,5 @@
+let _ = require("lodash");
+
 /**
  * @function stylelist
  * @description Concatenates css-classes, optionally with a conditional rendering.
@@ -13,30 +15,39 @@ module.exports = function (...args) {
 
 	// For each entry in our argument list
 	args.forEach((element) => {
-		// If our current element is an array
-		if (element instanceof Array) {
-			// Let´s check if the first element is true
-			if (element[0]) {
-				let firstElement = element[0];
-
-				// If the first element in this Array is a string,
-				// check if it ends with a "-".
-				if (typeof firstElement == "string") {
-					// If so, we concatenate it directly
-					if (firstElement.charAt(firstElement.length - 1) == "-") {
-						classListArray.push(element.join(""));
-					}
-				} else {
-					// And append the remaining elements to our output-array
-					classListArray = classListArray.concat(element.slice(1, element.length));
-				}
-			}
+		if (_.isString(element)) {
+			classListArray.push(element);
 		}
 
-		// Most-used case: A simple string
-		if (typeof element == "string") {
-			// Simply push it to our array
-			classListArray.push(element);
+		if(_.isPlainObject(element)){
+			let classesArray = Object.entries(element);
+			classesArray.forEach( (singleElement) => {
+				if(singleElement[1]){
+					classListArray.push(singleElement[0]);
+				}
+			});
+		}
+
+		if (_.isArray(element)) {
+			let firstElement = element[0];
+
+			// If the first element in the Array is a string,
+			// we check if it ends with a "-".
+			// If so, we concatenate the whole array together
+			if (_.isString(firstElement)) {
+				if (firstElement.charAt(firstElement.length - 1) == "-") {
+					classListArray.push(element.join(""));
+					return;
+				}
+			}
+
+			// If the first element is not a string,
+			// we check if it validates to boolean-true.
+			// If so, we return the other elements in the array
+			if (firstElement) {
+				// And append the remaining elements to our output-array
+				classListArray = classListArray.concat(element.slice(1, element.length));
+			}
 		}
 	});
 
