@@ -17,8 +17,19 @@ module.exports = function (...args) {
 		if (element instanceof Array) {
 			// Let´s check if the first element is true
 			if (element[0]) {
-				// And append the remaining elements to our output-array
-				classListArray = classListArray.concat(element.slice(1, element.length));
+				let firstElement = element[0];
+
+				// If the first element in this Array is a string,
+				// check if it ends with a "-".
+				if (typeof firstElement == "string") {
+					// If so, we concatenate it directly
+					if (firstElement.charAt(firstElement.length - 1) == "-") {
+						classListArray.push(element.join(""));
+					}
+				} else {
+					// And append the remaining elements to our output-array
+					classListArray = classListArray.concat(element.slice(1, element.length));
+				}
 			}
 		}
 
