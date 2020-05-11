@@ -39,3 +39,11 @@ test("object-notation for conditions 2", () => {
 test("object-notation for conditions 3", () => {
 	expect(stylelist("class1", "class2", {"active" : false, "current" : true})).toBe("class1 class2 current");
 });
+
+test("dash-notation 1", () => {
+	expect(stylelist("class1", "class2", ["class-", 3])).toBe("class1 class2 class-3");
+});
+
+test("dash-notation 2", () => {
+	expect(stylelist("class1", "class2", ["class-", "5"])).toBe("class1 class2 class-5");
+});
