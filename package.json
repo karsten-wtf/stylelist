@@ -4,7 +4,7 @@
   "description": "A simple package that concatenates your css-classes, optionally with a condition.",
   "main": "stylelist.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,8 @@
   "homepage": "https://github.com/karsten-wtf/stylelist#readme",
   "dependencies": {
     "lodash": "^4"
+  },
+  "devDependencies": {
+    "jest": "^26.0.1"
   }
 }
