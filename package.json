@@ -1,6 +1,6 @@
 {
   "name": "stylelist",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A simple package that concatenates your css-classes, optionally with a condition.",
   "main": "stylelist.js",
   "scripts": {
@@ -22,9 +22,9 @@
   },
   "homepage": "https://github.com/karsten-wtf/stylelist#readme",
   "dependencies": {
-    "lodash": "^4"
+    "lodash": "^4.17.19"
   },
   "devDependencies": {
-    "jest": "^26.0.1"
+    "jest": "^26.1.0"
   }
 }
